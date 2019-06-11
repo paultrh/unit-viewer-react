@@ -2,7 +2,7 @@
   "name": "unit-viewer-react",
   "version": "0.5.2",
   "description": "A react component to display junit xml test file",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack",
