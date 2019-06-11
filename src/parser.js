@@ -1,7 +1,6 @@
 /*
-File taken from ''
+File taken from 'https://github.com/lukejpreston/xunit-viewer'
 */
-
 
 
 const parseString = require('xml2js-parser').parseStringSync

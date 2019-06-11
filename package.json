@@ -16,10 +16,11 @@
     "react",
     "unit",
     "junit",
-    "xml"
+    "xml",
+    "tests"
   ],
   "author": "paultrh",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/paultrh/unit-viewer-react/issues"
   },
