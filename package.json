@@ -1,6 +1,6 @@
 {
   "name": "unit-viewer-react",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A react component to display junit xml test file",
   "main": "build/index.js",
   "scripts": {
