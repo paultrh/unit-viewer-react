@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Done from '@material-ui/icons/Done'
+import Close from '@material-ui/icons/Close'
+import Assignment from '@material-ui/icons/Assignment'
+import NotInterested from '@material-ui/icons/NotInterested'
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from "@material-ui/core/Grid";
@@ -15,20 +19,21 @@ const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
     },
+    iconRecap: {
+        margin: theme.spacing(1),
+        fontSize: 64,
+        paddingRight: 10
+    },
+    iconDoneCustom: {
+        color: 'green',
+    },
+    iconCloseCustom: {
+        color: 'red',
+    },
     timing: {
         flexGrow: 1,
         textAlign: 'right'
     },
-    statusPass: {
-        backgroundColor: 'green',
-    },
-    statusFail: {
-        backgroundColor: 'red'
-    },
-    statusGrey: {
-        backgroundColor: 'grey',
-    },
-    statusNone: {},
     summaryStatus: {
         height: '100%',
         width: 'auto',
@@ -44,7 +49,9 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary,
     },
     paperContent: {
-        height: 100
+        alignItems: "center",
+        height: 100,
+        justifyContent: "center"
     },
     paperContainer: {
         paddingBottom: 25,
@@ -90,47 +97,60 @@ const UnitViewer = (props) => {
         return (
             <div className={classes.root}>
                 <Grid container spacing={3}>
-                    <Grid item sm={6} xs={12}>
+                    <Grid item sm={3} xs={12}>
                         <div className={classes.paperContainer}>
                             <Paper className={classes.paper}>
-                                <div className={classes.paperContent}>nb tests : {suite_header.tests}</div>
+                                <Grid container className={classes.paperContent}>
+                                    <Assignment className={classes.iconRecap}/>
+                                    {suite_header.tests}
+                                </Grid>
                             </Paper>
                         </div>
                     </Grid>
-                    <Grid item sm={6} xs={12}>
+                    <Grid item sm={3} xs={12}>
                         <div className={classes.paperContainer}>
                             <Paper className={classes.paper}>
-                                <div className={classes.paperContent}>sucess : {suite_header.pass}</div>
-                            </Paper></div>
+                                <Grid container className={classes.paperContent}>
+                                    <Done className={[classes.iconDoneCustom, classes.iconRecap]}/>
+                                    {suite_header.pass}
+                                </Grid>
+                            </Paper>
+                        </div>
                     </Grid>
-                    <Grid item sm={6} xs={12}>
+                    <Grid item sm={3} xs={12}>
                         <div className={classes.paperContainer}>
                             <Paper className={classes.paper}>
-                                <div className={classes.paperContent}>failures or
-                                    errors: {suite_header.fail + suite_header.error}</div>
-                            </Paper></div>
+                                <Grid container className={classes.paperContent}>
+                                    <Close className={[classes.iconCloseCustom, classes.iconRecap]}/>
+                                    {suite_header.fail + suite_header.error}
+                                </Grid>
+                            </Paper>
+                        </div>
                     </Grid>
-                    <Grid item sm={6} xs={12}>
+                    <Grid item sm={3} xs={12}>
                         <div className={classes.paperContainer}>
                             <Paper className={classes.paper}>
-                                <div className={classes.paperContent}>skipped or unknown
-                                    : {suite_header.skip + suite_header.unknown}</div>
-                            </Paper></div>
+                                <Grid container className={classes.paperContent}>
+                                    <NotInterested className={classes.iconRecap}/>
+                                    {suite_header.skip + suite_header.unknown}
+                                </Grid>
+                            </Paper>
+                        </div>
                     </Grid>
                 </Grid>
             </div>
         )
     }
 
-    const get_back_class = (status) => {
+    const get_back_icon = (status) => {
         if (status === 'pass') {
-            return classes.statusPass
+            return <Done className={classes.iconDoneCustom}/>
         } else if (status === 'error' || status === 'fail') {
-            return classes.statusFail
+            return <Close className={classes.iconCloseCustom}/>
         } else if (status === 'skip' || status === 'unknown') {
-            return classes.statusGrey
+            return <NotInterested />
         }
-        return classes.statusNone
+        return null
     }
 
     const get_body = () => {
@@ -141,7 +161,6 @@ const UnitViewer = (props) => {
         const listItems = suite_tests.map((test) =>
             <ExpansionPanel
                 key={test._uuid}
-                className={get_back_class(test.status)}
                 expanded={expanded === get_unique_expandable_id(test)}
                 onChange={handleChange(get_unique_expandable_id(test))}>
                 <ExpansionPanelSummary
@@ -149,6 +168,7 @@ const UnitViewer = (props) => {
                     aria-controls={test._uuid + "content"}
                     id={test._uuid + "header"}
                 >
+                    {get_back_icon(test.status)}
                     <Typography className={classes.heading}>{test.name}</Typography>
                     <Typography className={classes.secondaryHeading}>{test.status}</Typography>
                     <Typography className={classes.timing}>{test.time}s</Typography>
