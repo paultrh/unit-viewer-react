@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "test": "jest --coverage",
+    "test": "jest",
     "transpile": "babel src -d dist --copy-files",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
