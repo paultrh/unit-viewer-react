@@ -175,7 +175,7 @@ const UnitViewer = (props) => {
                     {get_back_icon(test.status)}
                     <Typography className={classes.heading}>{test.name}</Typography>
                     <Typography className={classes.secondaryHeading}>{test.status}</Typography>
-                    <Typography className={classes.timing}>{test.time}s</Typography>
+                    {test.time && <Typography className={classes.timing}>{test.time}s</Typography>}
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <div className={classes.messageContainer}>
