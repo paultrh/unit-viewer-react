@@ -1,8 +1,23 @@
-# unit-viewer-react
+<h1 align="center">unit-viewer-react</h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+<div align="center">
+  <strong>A react component to display junit xml test file</strong>
+</div>
 
-> A react component to display junit xml test file
+<br />
+
+<div align="center">
+  <!-- Licence -->
+  <a href="https://github.com/paultrh/unit-viewer-react/blob/master/LICENCE">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg"
+      alt="Licence" />
+  </a>
+  <!-- Build Status -->
+  <a href="https://travis-ci.com/paultrh/unit-viewer-react">
+    <img src="https://travis-ci.com/paultrh/unit-viewer-react.svg?branch=master"
+      alt="Build Status" />
+  </a>
+</div>
 
 ## Install
 
