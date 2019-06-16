@@ -1,5 +1,7 @@
 # unit-viewer-react
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 > A react component to display junit xml test file
 
 ## Install
