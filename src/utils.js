@@ -7,5 +7,8 @@ export const get_decoded_uri = (msg) => {
 }
 
 export const get_unique_expandable_id = (panel) => {
+    if (!panel._uuid) {
+        throw '_uuid should not be empty'
+    }
     return panel._uuid + get_decoded_uri(panel.message).length.toString()
 }

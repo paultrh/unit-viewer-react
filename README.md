@@ -33,6 +33,10 @@ function myApp() {
 export default myApp;
 ```
 
+## Demo
+
+[Live demo](https://paultrh.github.io/unit-viewer-react/)
+
 ## License
 
 [MIT](http://vjpr.mit-license.org)

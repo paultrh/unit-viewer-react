@@ -75,9 +75,13 @@ const UnitViewer = (props) => {
 
     useEffect(() => {
         if (props.xml) {
-            const parsedXml = parse(props.xml)
-            setJsSuite(parsedXml)
-            setStatus(parsedXml[0].status)
+            try {
+                const parsedXml = parse(props.xml)
+                setJsSuite(parsedXml)
+                setStatus(parsedXml[0].status)
+            } catch (error) {
+                setStatus('Error, invalid xml')
+            }
         } else {
             setStatus('Error, please provide a junit formatted XML')
         }
@@ -148,7 +152,7 @@ const UnitViewer = (props) => {
         } else if (status === 'error' || status === 'fail') {
             return <Close className={classes.iconCloseCustom}/>
         } else if (status === 'skip' || status === 'unknown') {
-            return <NotInterested />
+            return <NotInterested/>
         }
         return null
     }

@@ -7,7 +7,7 @@ const parseString = require('xml2js-parser').parseStringSync
 const toLaxTitleCase = require('titlecase').toLaxTitleCase
 const uuid = require('uuid')
 
-const xml2js = (xml) => {
+export const xml2js = (xml) => {
     let data = parseString(xml)
 
     let suites = []

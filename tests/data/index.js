@@ -1,9 +1,10 @@
-import React from 'react';
-import { render} from 'react-dom';
-import UnitViewer from '../../src';
+export const minimal = `<?xml version="1.0" encoding="UTF-8"?>
+                        <testsuite tests="1" failures="0" time="0.001008">
+                        <testcase name="LGTM" classname="Passing" time="0.000998"></testcase>
+                        </testsuite>
+                        `
 
-
-const basic_xml = `<?xml version="1.0" encoding="UTF-8" ?>
+export const basic = `<?xml version="1.0" encoding="UTF-8" ?>
                         <testsuites>
                             <testsuite name="suite with no properties">
                                 <testcase name="passing">
@@ -21,10 +22,3 @@ const basic_xml = `<?xml version="1.0" encoding="UTF-8" ?>
                             </testsuite>
                         </testsuites>
                         `
-
-const App = () => (
-    <UnitViewer xml={basic_xml}/>
-);
-
-
-render(<App />, document.getElementById("root"));
